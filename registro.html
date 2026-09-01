@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonido Vivo - Registrarse</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Sonido Vivo</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="login.html">Iniciar sesión</a>
+        <a href="registro.html">Registrarse</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Registro de usuario</h2>
+            <form id="form-registro">
+                <label for="run">RUN (sin puntos ni guion)</label>
+                <input type="text" id="run" name="run">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo">
+                <label for="region">Región</label>
+                <select id="region" name="region"><!-- cargar regiones con JS --></select>
+                <label for="comuna">Comuna</label>
+                <select id="comuna" name="comuna"><!-- actualizar con JS --></select>
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion">
+                <button type="submit">Registrarse</button>
+            </form>
+            <!-- Validar con JS: RUN + dígito verificador, correo, etc. -->
+        </section>
+    </main>
+
+    <footer>
+        <p>Sonido Vivo &copy; 2026 | Contacto: contacto@sonidovivo.cl</p>
+    </footer>
+</body>
+</html>

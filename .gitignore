@@ -1,0 +1,12 @@
+# Archivos del sistema
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Entornos / editores
+.vscode/
+.idea/
+*.swp
+
+# Compresión de entrega (se genera al subir)
+*.zip
