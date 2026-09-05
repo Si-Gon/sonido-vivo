@@ -111,3 +111,72 @@ footer {
     padding: 1rem;
     margin-top: 1.5rem;
 }
+
+/* ===== Catálogo (cards generadas por catalogo.js) ===== */
+
+#lista-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.producto-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+/* clave: la imagen NO puede ser más ancha que la card */
+.producto-card img {
+    width: 100%;
+    max-width: 180px;
+    height: 180px;
+    object-fit: cover;      /* recorta sin deformar (busca bien de cerca) */
+    border-radius: 6px;
+}
+
+.producto-card h3 {
+    font-size: .95rem;
+    margin: .5rem 0 .1rem;
+    color: #222;
+}
+
+.producto-card .marca {
+    font-size: .8rem;
+    color: #666;
+}
+
+.producto-card .precio {
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: .3rem 0;
+}
+
+.producto-card button {
+    margin-top: .4rem;
+    width: 100%;
+}
+
+/* ===== Vista de detalle ===== */
+#detalle-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: .6rem;
+}
+
+#detalle-producto img {
+    width: 100%;
+    max-width: 340px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+}
