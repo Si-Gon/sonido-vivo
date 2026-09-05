@@ -16,20 +16,79 @@
         <a href="index.html">Inicio</a>
         <a href="nosotros.html">Nosotros</a>
         <a href="catalogo.html">Catálogo</a>
+        <a href="carrito.html">Carrito</a>
         <a href="contacto.html">Contacto</a>
         <a href="login.html">Iniciar sesión</a>
         <a href="registro.html">Registrarse</a>
+        
     </nav>
 
     <main>
-        <section>
-            <h2>Bienvenidos</h2>
-            <p>Sonido Vivo lleva 11 años equipando a músicos. Aquí encontrarás guitarras, bajos, baterías, teclados, amplificadores, microfonos, pedales y accesorios.</p>
-        </section>
+            
+    <div class="carrusel">
+        <div class="carrusel-slide activo">
+            <div class="carrusel-contenido">
+                <h2>2013 — Nace Sonido Vivo</h2>
+                <p>En Antofagasta, una tienda de instrumentos nació para acercar la música a todos.</p>
+            </div>
+        </div>
+        <div class="carrusel-slide">
+            <div class="carrusel-contenido">
+                <h2>2019 — Expansión</h2>
+                <p>Guitarras, bajos, baterías y más de 340 productos para cada tipo de músico.</p>
+            </div>
+        </div>
+        <div class="carrusel-slide">
+            <div class="carrusel-contenido">
+                <h2>2026 — Tu música empieza aquí</h2>
+                <p>Herramientas profesionales, accesorios y el sonido que buscas.</p>
+            </div>
+        </div>
+        <button class="carrusel-btn izq" onclick="carrusel(-1)">&#10094;</button>
+        <button class="carrusel-btn der" onclick="carrusel(1)">&#10095;</button>
+    </div>
+    
+    <section>
+        <h2>Bienvenidos a Sonido Vivo</h2>
+        <p>Somos una tienda de instrumentos musicales con más de 11 años equipando a músicos de todo Chile. Guitarras, bajos, baterías, teclados, amplificadores, micrófonos, pedales de efectos y accesorios: todo lo que necesitas para crear tu música.</p>
+    </section>
+    
+    <section>
+        <h2>Productos destacados</h2>
+        <div id="destacados"></div>
+    </section>
     </main>
 
     <footer>
         <p>Sonido Vivo &copy; 2026 | Contacto: contacto@sonidovivo.cl</p>
     </footer>
+        <script>
+    var slideActual = 0;
+    var slides = document.querySelectorAll('.carrusel-slide');
+    var total = slides.length;
+
+    function carrusel(direccion) {
+        slides[slideActual].classList.remove('activo');
+        slideActual = (slideActual + direccion + total) % total;
+        slides[slideActual].classList.add('activo');
+    }
+
+    setInterval(function(){ carrusel(1); }, 5000);
+
+        var contDestacados = document.getElementById('destacados');
+        if (contDestacados) {
+            var destacados = productos.slice(0, 4);
+            destacados.forEach(function(p) {
+                var card = document.createElement('div');
+                card.className = 'producto-card';
+                card.innerHTML =
+                    '<img src="' + p.imagen + '" alt="' + p.nombre + '">' +
+                    '<h3>' + p.nombre + '</h3>' +
+                    '<p class="precio">' + new Intl.NumberFormat('es-CL',
+                        {style:'currency', currency:'CLP'}).format(p.precio) + '</p>';
+                contDestacados.appendChild(card);
+            });
+        }
+        </script>
 </body>
 </html>

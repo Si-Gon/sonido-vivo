@@ -180,3 +180,72 @@ footer {
     object-fit: cover;
     border-radius: 8px;
 }
+
+.carrito-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: .6rem;
+    margin-bottom: .6rem;
+    background: #fafafa;
+}
+
+.carrito-item img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.carrito-item h3 { font-size: .95rem; margin-bottom: .1rem; }
+
+#total-carrito { font-weight: 700; font-size: 1.1rem; margin: .8rem 0; }
+
+/* Carrusel */
+.carrusel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.carrusel-slide {
+    display: none;
+    background: linear-gradient(135deg, #222 0%, #444 100%);
+    color: #fff;
+    padding: 3rem 2rem;
+    text-align: center;
+    min-height: 220px;
+}
+.carrusel-slide.activo {
+    display: block;
+}
+.carrusel-contenido h2 {
+    font-size: 1.6rem;
+    margin-bottom: .5rem;
+    color: #f47735;
+}
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    border: none;
+    font-size: 1.8rem;
+    padding: .5rem .8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 2;
+}
+.carrusel-btn.izq { left: .6rem; }
+.carrusel-btn.der { right: .6rem; }
+.carrusel-btn:hover { background: rgba(0,0,0,.8); }
+/* Destacados (grid como el catálogo) */
+#destacados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
