@@ -50,6 +50,13 @@ function formatearPrecio(valor) {
         .format(valor);
 }
 
+function agregarCarrito(id) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.push(id);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    alert('Producto agregado al carrito');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     renderCarrito();
 });

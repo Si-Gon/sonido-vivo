@@ -20,11 +20,11 @@ function renderDetalle() {
         '<p><b>Marca:</b> ' + prod.marca + ' · Modelo: ' + prod.modelo + '</p>' +
         '<p class="precio">' + formatearPrecio(prod.precio) + '</p>' +
         '<p><b>Código:</b> ' + prod.codigo + ' · Stock: ' + prod.stock + ' unidades</p>' +
-        '<p><b>Descripción:</b> ' + prod.descripcion + '</p>';
+        '<p><b>Descripción:</b> ' + prod.descripcion + '</p>'+
+        '<button onclick="agregarCarrito(' + prod.id + ')">Agregar al carrito</button>';
     document.title = 'Sonido Vivo - ' + prod.nombre;
 }
 
-// reutiliza el formateo del catálogo (o defínelo aquí si prefieres archivos independientes)
 function formatearPrecio(valor) {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' })
         .format(valor);

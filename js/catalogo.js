@@ -21,7 +21,7 @@ function renderCatalogo() {
             '<h3>' + prod.nombre + '</h3>' +
             '<p class="marca">' + prod.marca + ' ' + prod.modelo + '</p>' +
             '<p class="precio">' + formatearPrecio(prod.precio) + '</p>' +
-            '<button onclick="verDetalle(' + prod.id + ')">Ver detalle</button>';+
+            '<button onclick="verDetalle(' + prod.id + ')">Ver detalle</button>'+
             '<button onclick="agregarCarrito(' + prod.id + ')">Agregar</button>';
             
         contenedor.appendChild(card);
@@ -31,12 +31,6 @@ function renderCatalogo() {
 function verDetalle(id) {
     localStorage.setItem('productoSeleccionado', id);
     window.location.href = 'detalle.html';
-}
-function agregarCarrito(id) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carrito.push(id);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    alert('Producto agregado al carrito');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
