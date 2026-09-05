@@ -1,12 +1,36 @@
-// Sonido Vivo - render del catálogo (a completar por el equipo)
+// Sonido Vivo - Catálogo desde el arreglo 'productos' (js/productos.js)
 
-// Funcion de ejemplo: pinta el arreglo de productos en #lista-productos
-// function renderCatalogo() { ... }
+function formatearPrecio(valor) {
+    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' })
+        .format(valor);
+}
 
-// Al cargar, si existe el contenedor, mostrar el catalogo
-document.addEventListener('DOMContentLoaded', function () {
+function renderCatalogo() {
     const contenedor = document.getElementById('lista-productos');
-    if (contenedor) {
-        // TODO(equipo): recorrer 'productos' con forEach/map y pintar cada producto
-    }
+    if (!contenedor) return;
+
+    contenedor.innerHTML = '';                     
+
+    productos.forEach(function (prod) {            
+        const card = document.createElement('div');
+        card.className = 'producto-card';
+
+        card.innerHTML =
+            '<img src="' + prod.imagen + '" alt="' + prod.nombre + '" ' +
+            'onerror="this.src=\'imagenes/sin-foto.jpg\'">' +
+            '<h3>' + prod.nombre + '</h3>' +
+            '<p class="marca">' + prod.marca + ' ' + prod.modelo + '</p>' +
+            '<p class="precio">' + formatearPrecio(prod.precio) + '</p>' +
+            '<button onclick="verDetalle(' + prod.id + ')">Ver detalle</button>';
+        contenedor.appendChild(card);
+    });
+}
+
+function verDetalle(id) {
+    localStorage.setItem('productoSeleccionado', id);
+    window.location.href = 'detalle.html';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    renderCatalogo();
 });
