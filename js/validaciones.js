@@ -1,7 +1,13 @@
 // Algoritmo Módulo 11 para validar RUN chileno
 function validarRut(rut) {
-    let valor = rut.replace(/\./g, '').replace(/-/g, '').trim().toUpperCase();
-    if (valor.length < 8) return false;
+    if (!rut) return false;
+    
+    // El RUN no debe contener espacios accidentales en ninguna parte
+    if (/\s/.test(rut)) return false;
+
+    let valor = rut.replace(/\./g, '').replace(/-/g, '').toUpperCase();
+
+    if (valor.length < 8 || valor.length > 9) return false;
 
     let cuerpo = valor.slice(0, -1);
     let dv = valor.slice(-1);
@@ -23,28 +29,81 @@ function validarRut(rut) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const formRegistro = document.querySelector('form');
+    const formContacto = document.getElementById('form-contacto');
+    const formRegistro = document.querySelector('form:not(#form-contacto)');
 
+    // Regex estricta: Valida estructura exacta y PROHÍBE explícitamente cualquier espacio (\s)
+    const regexEmailEstricto = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    // 1. VALIDACIÓN ESTRICTA: CONTACTO.HTML
+    if (formContacto) {
+        formContacto.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nombreInput = document.getElementById('nombre');
+            const correoInput = document.getElementById('correo');
+            const mensajeInput = document.getElementById('mensaje');
+
+            const nombre = nombreInput?.value || '';
+            const correo = correoInput?.value || '';
+            const mensaje = mensajeInput?.value || '';
+
+            // Verificar si hay campos vacíos o solo espacios
+            if (!nombre.trim() || !correo.trim() || !mensaje.trim()) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            // Verificar que el correo no contenga espacios al inicio, centro o final
+            if (!regexEmailEstricto.test(correo)) {
+                alert('Por favor, ingresa un correo electrónico válido sin espacios al inicio ni al final.');
+                correoInput.focus();
+                return;
+            }
+
+            alert('¡Mensaje enviado con éxito!');
+            formContacto.reset();
+        });
+    }
+
+    // 2. VALIDACIÓN ESTRICTA: REGISTRO.HTML
     if (formRegistro) {
         formRegistro.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const rutInput = document.getElementById('rut');
-            const emailInput = document.getElementById('correo');
+            const rutInput = document.getElementById('rut') || document.getElementById('run') || formRegistro.querySelector('input[name="rut"]') || formRegistro.querySelector('input[name="run"]');
+            const emailInput = document.getElementById('correo') || formRegistro.querySelector('input[type="email"]');
+            
+            const inputs = formRegistro.querySelectorAll('input:not([type="submit"]), select, textarea');
+            let hayCampoVacio = false;
 
-            // Validar RUN si existe el campo
-            if (rutInput && !validarRut(rutInput.value)) {
-                alert('El RUN ingresado no es válido. Formato correcto: 12345678-9');
-                rutInput.focus();
+            inputs.forEach(input => {
+                if (input.value.trim() === '') {
+                    hayCampoVacio = true;
+                }
+            });
+
+            if (hayCampoVacio) {
+                alert('Por favor, completa todos los campos del formulario.');
                 return;
             }
 
-            // Validar Email con expresión regular
-            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailInput && !regexEmail.test(emailInput.value)) {
-                alert('Por favor, ingresa un correo electrónico válido.');
-                emailInput.focus();
-                return;
+            if (rutInput) {
+                const valorRut = rutInput.value;
+                if (!validarRut(valorRut)) {
+                    alert('El RUN ingresado no es válido. Asegúrate de que no tenga espacios ni un formato incorrecto.');
+                    rutInput.focus();
+                    return;
+                }
+            }
+
+            if (emailInput) {
+                const valorCorreo = emailInput.value;
+                if (!regexEmailEstricto.test(valorCorreo)) {
+                    alert('Por favor, ingresa un correo electrónico válido sin espacios al inicio ni al final.');
+                    emailInput.focus();
+                    return;
+                }
             }
 
             alert('¡Registro validado e ingresado correctamente!');
