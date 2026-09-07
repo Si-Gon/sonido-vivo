@@ -64,12 +64,14 @@ main {
 
 section {
     background: #fff;
-    border-radius: 8px;
-    padding: 1.2rem;
+    padding: 2rem;
     margin-bottom: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
 }
-section h2 {
+div h2 {
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: .8rem;
@@ -287,9 +289,13 @@ footer {
 .carrusel-btn:hover { background: rgba(0,0,0,.8); }
 
 #destacados {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
+    justify-content: center;
+}
+#destacados .producto-card {
+     flex: 0 0 200px;
 }
 
 .logo {
