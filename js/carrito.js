@@ -26,7 +26,7 @@ function renderCarrito() {
             '<p class="precio">' + formatearPrecio(prod.precio) + '</p>' +
             '<button onclick="quitarDelCarrito(' + index + ')">Quitar</button>' +
             '</div>';
-        contenedor.appendChild(item);
+        contenedor.appendChild(item)
     });
 
     document.getElementById('total-carrito').textContent =

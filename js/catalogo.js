@@ -1,4 +1,3 @@
-// Sonido Vivo - Catálogo desde el arreglo 'productos' (js/productos.js)
 
 function formatearPrecio(valor) {
     return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' })
@@ -6,25 +5,30 @@ function formatearPrecio(valor) {
 }
 
 function renderCatalogo() {
-    const contenedor = document.getElementById('lista-productos');
+    var contenedor = document.getElementById('lista-productos');
     if (!contenedor) return;
 
-    contenedor.innerHTML = '';                     
+    contenedor.innerHTML = '';
 
-    productos.forEach(function (prod) {            
-        const card = document.createElement('div');
-        card.className = 'producto-card';
+    productos.forEach(function (prod) {
+        var col = document.createElement('div');
+        col.className = 'card-grid-item';
 
-        card.innerHTML =
-            '<img src="' + prod.imagen + '" alt="' + prod.nombre + '" ' +
-            'onerror="this.src=\'imagenes/sin-foto.jpg\'">' +
-            '<h3>' + prod.nombre + '</h3>' +
-            '<p class="marca">' + prod.marca + ' ' + prod.modelo + '</p>' +
-            '<p class="precio">' + formatearPrecio(prod.precio) + '</p>' +
-            '<button onclick="verDetalle(' + prod.id + ')">Ver detalle</button>'+
-            '<button onclick="agregarCarrito(' + prod.id + ')">Agregar</button>';
-            
-        contenedor.appendChild(card);
+        col.innerHTML =
+            '<div class="card h-100">' +
+            '  <img src="' + prod.imagen + '" class="card-img-top" alt="' + prod.nombre + '">' +
+            '  <div class="card-body">' +
+            '    <h5 class="card-title">' + prod.nombre + '</h5>' +
+            '    <p class="card-text text-muted mb-1">' + prod.marca + ' · ' + prod.modelo + '</p>' +
+            '    <p class="card-text fw-bold">' + formatearPrecio(prod.precio) + '</p>' +
+            '    <div class="d-grid gap-1">' +
+            '      <button class="btn btn-outline-dark btn-sm" onclick="verDetalle(' + prod.id + ')">Ver detalle</button>' +
+            '      <button class="btn btn-dark btn-sm" onclick="agregarCarrito(' + prod.id + ')">Agregar</button>' +
+            '    </div>' +
+            '  </div>' +
+            '</div>';
+
+        contenedor.appendChild(col);
     });
 }
 

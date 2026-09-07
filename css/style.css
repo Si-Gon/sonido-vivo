@@ -50,15 +50,12 @@ nav a:hover {
     background-color: #555;
 }
 
-/* El área administrativa se diferencia visualmente de la pública */
 nav.nav-admin {
     background-color: #7a1f1f;
 }
 
 main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem;
+    padding: 1rem 0;
 }
 
 section {
@@ -67,6 +64,12 @@ section {
     padding: 1.2rem;
     margin-bottom: 1rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+}
+section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: .8rem;
+    color: #1a1a1a;
 }
 
 form {
@@ -111,16 +114,6 @@ footer {
     padding: 1rem;
     margin-top: 1.5rem;
 }
-
-/* ===== Catálogo (cards generadas por catalogo.js) ===== */
-
-#lista-productos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
 .producto-card {
     background: #fff;
     border: 1px solid #e0e0e0;
@@ -133,12 +126,12 @@ footer {
     box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
 }
 
-/* clave: la imagen NO puede ser más ancha que la card */
+
 .producto-card img {
     width: 100%;
     max-width: 180px;
     height: 180px;
-    object-fit: cover;      /* recorta sin deformar (busca bien de cerca) */
+    object-fit: cover;      
     border-radius: 6px;
 }
 
@@ -164,7 +157,37 @@ footer {
     width: 100%;
 }
 
-/* ===== Vista de detalle ===== */
+#lista-productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.card-grid-item .card {
+    height: 100%;
+}
+
+.card-grid-item .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-grid-item .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-grid-item .card-body .d-grid {
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    #lista-productos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 #detalle-producto {
     display: flex;
     flex-direction: column;
@@ -204,28 +227,44 @@ footer {
 #total-carrito { font-weight: 700; font-size: 1.1rem; margin: .8rem 0; }
 
 /* Carrusel */
-.carrusel {
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,.15);
-}
 .carrusel-slide {
+    position: relative;
     display: none;
-    background: linear-gradient(135deg, #222 0%, #444 100%);
-    color: #fff;
-    padding: 3rem 2rem;
-    text-align: center;
-    min-height: 220px;
+    min-height: 250px;
+    overflow: hidden;
 }
 .carrusel-slide.activo {
     display: block;
 }
+.carrusel-slide img {
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+.carrusel-contenido {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
 .carrusel-contenido h2 {
-    font-size: 1.6rem;
-    margin-bottom: .5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
     color: #f47735;
+}
+.carrusel-contenido p {
+    font-size: 1rem;
+    max-width: 500px;
 }
 .carrusel-btn {
     position: absolute;
@@ -243,9 +282,16 @@ footer {
 .carrusel-btn.izq { left: .6rem; }
 .carrusel-btn.der { right: .6rem; }
 .carrusel-btn:hover { background: rgba(0,0,0,.8); }
-/* Destacados (grid como el catálogo) */
+
 #destacados {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
+}
+
+.logo {
+    width: 100%;
+    max-width: 50px;
+    object-fit: cover;
+    border-radius: 6px;
 }
