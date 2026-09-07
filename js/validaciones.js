@@ -1,8 +1,6 @@
-// Algoritmo Módulo 11 para validar RUN chileno
 function validarRut(rut) {
     if (!rut) return false;
     
-    // El RUN no debe contener espacios accidentales en ninguna parte
     if (/\s/.test(rut)) return false;
 
     let valor = rut.replace(/\./g, '').replace(/-/g, '').toUpperCase();
@@ -32,10 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const formContacto = document.getElementById('form-contacto');
     const formRegistro = document.querySelector('form:not(#form-contacto)');
 
-    // Regex estricta: Valida estructura exacta y PROHÍBE explícitamente cualquier espacio (\s)
     const regexEmailEstricto = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    // 1. VALIDACIÓN ESTRICTA: CONTACTO.HTML
     if (formContacto) {
         formContacto.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -48,13 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const correo = correoInput?.value || '';
             const mensaje = mensajeInput?.value || '';
 
-            // Verificar si hay campos vacíos o solo espacios
             if (!nombre.trim() || !correo.trim() || !mensaje.trim()) {
                 alert('Por favor, completa todos los campos obligatorios.');
                 return;
             }
 
-            // Verificar que el correo no contenga espacios al inicio, centro o final
             if (!regexEmailEstricto.test(correo)) {
                 alert('Por favor, ingresa un correo electrónico válido sin espacios al inicio ni al final.');
                 correoInput.focus();
@@ -66,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 2. VALIDACIÓN ESTRICTA: REGISTRO.HTML
     if (formRegistro) {
         formRegistro.addEventListener('submit', function (e) {
             e.preventDefault();

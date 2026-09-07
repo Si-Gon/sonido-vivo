@@ -46,13 +46,16 @@
                 <input type="email" id="correo" name="correo">
                 <label for="region">Región</label>
                 <select id="region" name="region"><!-- cargar regiones con JS --></select>
+                <option value="">Seleccionar región</option>
                 <label for="comuna">Comuna</label>
                 <select id="comuna" name="comuna"><!-- actualizar con JS --></select>
+                <option value="">Seleccionar comuna</option>
                 <label for="direccion">Dirección</label>
                 <input type="text" id="direccion" name="direccion">
+                <label for="clave">Contraseña</label>
+                <input type="password" id="clave" name="clave" minlength="4" required>
                 <button type="submit">Registrarse</button>
             </form>
-            <!-- Validar con JS: RUN + dígito verificador, correo, etc. -->
         </section>
     </main>
 

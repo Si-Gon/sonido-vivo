@@ -96,7 +96,7 @@
 
         var contDestacados = document.getElementById('destacados');
         if (contDestacados) {
-            var destacados = productos.slice(0, 6);
+            var destacados = productos.slice().sort(function() { return Math.random() - 0.5; }).slice(0, 7);
             destacados.forEach(function(p) {
                 var card = document.createElement('div');
                 card.className = 'producto-card';
