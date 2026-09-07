@@ -106,6 +106,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
+            const nombreInput = document.getElementById('nombre');
+            const claveInput = document.getElementById('clave');
+
+            const nombre = nombreInput ? nombreInput.value.trim() : '';
+            const correoRegistro = emailInput ? emailInput.value.trim() : '';
+            const claveRegistro = claveInput ? claveInput.value : '';
+
+            const usuarios = JSON.parse(localStorage.getItem('sonidoVivoUsuarios') || '[]');
+            usuarios.push({
+                correo: correoRegistro,
+                nombre: nombre,
+                clave: claveRegistro,
+                rol: 'cliente'
+            });
+            localStorage.setItem('sonidoVivoUsuarios', JSON.stringify(usuarios));
+
+            iniciarSesion({ correo: correoRegistro, nombre: nombre, rol: 'cliente' });
+            window.location.href = 'index.html';
+            
             alert('¡Registro validado e ingresado correctamente!');
             formRegistro.reset();
         });

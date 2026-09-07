@@ -1,6 +1,7 @@
 const ADMIN_DEMO = {
     correo: 'admin@sonidovivo.cl',
     clave: 'admin123',
+    nombre: 'Administrador',
     rol: 'admin'
 };
  
@@ -25,7 +26,8 @@ function iniciarSesion(usuario) {
 
     sessionStorage.setItem('sonidoVivoSesion', JSON.stringify({
         correo: usuario.correo,
-        rol: usuario.rol || 'cliente'
+        rol: usuario.rol || 'cliente',
+        nombre: usuario.nombre
     }));
 }
  
@@ -75,12 +77,32 @@ function protegerRutaAdmin() {
     }
 }
 
+function actualizarNavSesion() {
+    const sesion = obtenerSesion();
+    const linkLogin = document.querySelector('a[href="login.html"]');
+    const linkRegistro = document.querySelector('a[href="registro.html"]');
+ 
+    if (!sesion) return; 
+ 
+    if (linkLogin) {
+        linkLogin.textContent = 'Hola, ' + sesion.nombre;
+        linkLogin.setAttribute('href', '#');
+        linkLogin.addEventListener('click', function (event) {
+            event.preventDefault();
+            cerrarSesion();
+        });
+    }
+    if (linkRegistro) {
+        linkRegistro.style.display = 'none';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('form-login');
     if (form) {
         form.addEventListener('submit', manejarLogin);
     }
-
+    actualizarNavSesion();
 });
 
 
