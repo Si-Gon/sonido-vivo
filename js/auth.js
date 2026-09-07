@@ -72,23 +72,45 @@ function manejarLogin(event) {
 
 function manejarRegistro(event) {
     event.preventDefault();
-    const run = document.getElementById('run').value.trim();
-    const nombre = document.getElementById('nombre').value.trim();
-    const apellidos = document.getElementById('apellidos').value.trim();
-    const correo = document.getElementById('correo').value.trim();
-    const region = document.getElementById('region').value;
-    const comuna = document.getElementById('comuna').value;
-    const direccion = document.getElementById('direccion').value.trim();
-    const clave = document.getElementById('clave').value;
-    if (!run || !nombre || !apellidos || !correo || !region || !comuna || !direccion || !clave) {
-        alert('Todos los campos son obligatorios.');
+    var run = document.getElementById('run').value.trim();
+    var nombre = document.getElementById('nombre').value.trim();
+    var apellidos = document.getElementById('apellidos').value.trim();
+    var correo = document.getElementById('correo').value.trim();
+    var region = document.getElementById('region').value;
+    var comuna = document.getElementById('comuna').value;
+    var direccion = document.getElementById('direccion').value.trim();
+    var clave = document.getElementById('clave').value;
+    if (!run || !nombre || !apellidos || !correo || !direccion || !clave) {
+        alert('Todos los campos obligatorios deben ser completados.');
         return;
     }
-    if (run.length < 7 || run.length > 9) {
-        alert('El RUN debe tener entre 7 y 9 caracteres.');
+    if (!validarRut(run)) {
+        alert('El RUN no es válido. Ingresa sin puntos ni guión con dígito verificador.');
+        document.getElementById('run').focus();
         return;
     }
-    const exito = registrarUsuario({ run, nombre, apellidos, correo, region, comuna, direccion, clave });
+    if (nombre.length > 50) {
+        alert('El nombre no puede superar los 50 caracteres.');
+        return;
+    }
+    if (apellidos.length > 100) {
+        alert('Los apellidos no pueden superar los 100 caracteres.');
+        return;
+    }
+    if (correo.length > 100) {
+        alert('El correo no puede superar los 100 caracteres.');
+        return;
+    }
+    var regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regexEmail.test(correo)) {
+        alert('El correo no tiene un formato válido.');
+        return;
+    }
+    if (clave.length < 4 || clave.length > 10) {
+        alert('La contraseña debe tener entre 4 y 10 caracteres.');
+        return;
+    }
+    var exito = registrarUsuario({ run: run, nombre: nombre, apellidos: apellidos, correo: correo, region: region, comuna: comuna, direccion: direccion, clave: clave });
     if (!exito) {
         alert('Ya existe una cuenta con ese correo.');
         return;
