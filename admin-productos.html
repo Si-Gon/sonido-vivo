@@ -24,6 +24,58 @@
     <main>
         <section>
             <h2>Mantenedor de productos</h2>
+            <button type="button" id="btn-agregar-producto">Agregar producto</button>
+            <div id="contenedor-form-producto" style="display: none; margin-top: 1.5rem; padding: 1rem; border: 1px solid #ccc;">
+                <h3 id="form-producto-titulo">Agregar producto</h3>
+                <form id="form-producto">
+                    <input type="hidden" id="producto-id">
+                    
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" required>
+
+                    <label for="categoria">Categoría:</label>
+                    <input type="text" id="categoria" required>
+                    
+                    <label for="nombre-producto">Nombre:</label>
+                    <input type="text" id="nombre-producto" required>
+                    
+                    <label for="marca">Marca</label>
+                    <input type="text" id="marca" required>
+
+                    <label for="modelo">Modelo</label>
+                    <input type="text" id="modelo" required>
+
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" step="0.01" required>
+                
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" required>
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion"></textarea>
+
+                    <label for="imagen">Imagen (URL):</label>
+                    <input type="text" id="imagen">
+
+                    <button type="submit">Guardar</button>
+                    <button type="button" id="btn-cancelar-form">Cancelar</button>
+                </form>
+
+            </div>
+                <table id="tabla-productos" border="1" cellpadding="6" style="width: 100%; margin-top: 1rem; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-productos"></tbody>
+            </table>
+
             <p>Listado, editar y gestionar productos. (Completar mantenedor)</p>
         </section>
     </main>
@@ -31,5 +83,8 @@
     <footer>
         <p>Sonido Vivo &copy; 2026 | Contacto: contacto@sonidovivo.cl</p>
     </footer>
+
+    <script src="js/adminProductos.js"></script>
+    <script src="js/productos.js"></script>
 </body>
 </html>
