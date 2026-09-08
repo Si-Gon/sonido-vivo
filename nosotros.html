@@ -8,20 +8,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header class="bg-dark text-white text-center py-4">
         <h1>Sonido Vivo</h1>
+        <p class="lead mb-0">Especialistas en instrumentos y equipos musicales</p>
     </header>
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-top border-secondary">
         <div class="container">
             <a class="navbar-brand" href="index.html">Sonido Vivo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="nosotros.html">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
                     <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
                     <li class="nav-item"><a class="nav-link" href="novedades.html">Novedades</a></li>
@@ -33,18 +34,113 @@
         </div>
     </nav>
 
-    <main>
-        <section>
-            <h2>Quiénes somos</h2>
-            <p>Tienda familiar de instrumentos musicales en Viña del Mar. Atendemos a músicos de todos los niveles, con equipamiento y asesoría.</p>
-            <!-- Completar: propósito, actividad, equipo desarrollador -->
-        </section>
-    </main>
+<main class="container py-5">
 
-    <footer>
-        <p>Sonido Vivo &copy; 2026 | Contacto: contacto@sonidovivo.cl</p>
+    <!-- Sección 1: Quiénes Somos y Nuestra Esencia -->
+    <section class="mb-5">
+        <div class="row g-4 align-items-center">
+            
+            <!-- Columna Izquierda: Historia -->
+            <div class="col-lg-7">
+                <h2 class="fw-bold mb-3">Quiénes somos</h2>
+                <p class="lead text-secondary">
+                    Somos una tienda especializada en instrumentos musicales, equipos de sonido y accesorios, ubicados en la ciudad de Viña del Mar, Región de Valparaíso.
+                </p>
+                <p>
+                    Con más de 11 años de trayectoria en el mercado, <strong>Sonido Vivo</strong> nació como una tienda familiar dedicada a atender y asesorar a músicos de todos los niveles, desde principiantes entusiastas hasta profesionales en gira. Nuestro equipo es liderado por su dueño junto a vendedores apasionados por la música que brindan una atención cercana, técnica y personalizada.
+                </p>
+            </div>
+
+            <!-- Columna Derecha: Tarjeta de Esencia -->
+            <div class="col-lg-5">
+                <div class="card bg-light border-0 shadow-sm p-4">
+                    <h4 class="fw-bold text-dark mb-3">Nuestra Esencia</h4>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3">
+                            <span class="fs-5 me-2">📍</span>
+                            <strong>Ubicación:</strong> Viña del Mar, Región de Valparaíso
+                        </li>
+                        <li class="mb-3">
+                            <span class="fs-5 me-2">⏱️</span>
+                            <strong>Experiencia:</strong> 11 años al servicio de la música
+                        </li>
+                        <li class="mb-0">
+                            <span class="fs-5 me-2">🎸</span>
+                            <strong>Catálogo:</strong> Más de 340 referencias activas
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección 2: Misión y Visión -->
+    <section class="mb-5">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100 border-0 bg-light p-4">
+                    <h3 class="h4 fw-bold mb-2">Nuestra Misión</h3>
+                    <p class="mb-0">
+                        Facilitar el acceso a instrumentos y equipos de audio de alta calidad, brindando una asesoría técnica honesta y personalizada para que cada músico encuentre el sonido que busca.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 border-0 bg-light p-4">
+                    <h3 class="h4 fw-bold mb-2">Nuestra Visión</h3>
+                    <p class="mb-0">
+                        Ser la tienda de música de referencia en la Región de Valparaíso y en el entorno digital, reconocida por el respaldo técnico, la variedad de catálogo y la cercanía con la comunidad musical.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Equipo de Desarrollo (3 Integrantes) -->
+    <section>
+        <h3 class="fw-bold text-center mb-4">Equipo de Desarrollo</h3>
+        <div class="row g-4 justify-content-center text-center">
+            
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">Silvio Gonzalves</h5>
+                        <p class="text-muted mb-0">Desarrollo Web (HTML / CSS / JS)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">Maximiliano Quezada</h5>
+                        <p class="text-muted mb-0">Desarrollo Web (HTML / CSS / JS)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-3">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">Oscar Garrido</h5>
+                        <p class="text-muted mb-0">Desarrollo Web (HTML / CSS / JS)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">Sonido Vivo &copy; 2026 | Contacto: contacto@sonidovivo.cl | Viña del Mar, Chile</p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/auth.js"></script>
 </body>
 </html>
