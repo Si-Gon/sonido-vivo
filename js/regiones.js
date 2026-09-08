@@ -49,8 +49,6 @@ function actualizarComunas() {
     const regionElegida = selectRegion.value;
     selectComuna.innerHTML = '<option value="">Selecciona una comuna</option>';
  
-    // Si no hay región elegida, la comuna queda deshabilitada
-    // para que el usuario elija en orden (región -> comuna).
     if (!regionElegida) {
         selectComuna.disabled = true;
         return;
@@ -68,7 +66,7 @@ function actualizarComunas() {
  
 document.addEventListener('DOMContentLoaded', function () {
     poblarRegiones();
-    actualizarComunas(); // deja "comuna" con el placeholder y deshabilitado
+    actualizarComunas();
  
     const selectRegion = document.getElementById('region');
     if (selectRegion) {

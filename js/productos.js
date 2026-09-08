@@ -1,5 +1,3 @@
-// Catálogo Sonido Vivo - generado desde el XLSX oficial (Forma B)
-
 const productos = [
     { id: 1, codigo: 'GA001', categoria: 'Guitarras Acústicas', nombre: 'Guitarra Acústica Folk', marca: 'Yamaha', modelo: 'F310', precio: 129990, stock: 8, descripcion: 'Tapa de abeto, aros y fondo de meranti. Ideal para iniciantes.', imagen: 'imagenes/ga001.jpg' },
     { id: 2, codigo: 'GA002', categoria: 'Guitarras Acústicas', nombre: 'Guitarra Acústica Dreadnought', marca: 'Fender', modelo: 'CD-60S', precio: 189990, stock: 5, descripcion: 'Tapa de abeto macizo, brazo de caoba. Sonido cálido y proyectado.', imagen: 'imagenes/ga002.webp' },

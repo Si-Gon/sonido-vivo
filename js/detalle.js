@@ -4,7 +4,6 @@ function renderDetalle() {
 
     const id = parseInt(localStorage.getItem('productoSeleccionado'));
 
-    // busca el producto por id en el arreglo (filter devuelve lista; [0] toma el primero)
     const prod = productos.filter(function (p) { return p.id === id; })[0];
 
     if (!prod) {
